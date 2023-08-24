@@ -9,14 +9,14 @@
 #include <fcntl.h>
 
 /**
- * struct stack_s - A structure representing a doubly linked list 
+ * struct stack_s - A structure representing a doubly linked list
  * for a stack (or queue).
  * @n: An integer value
  * @prev: Pointer to the previous element of the stack (or queue)
  * @next: Pointer to the next element of the stack (or queue)
- * Description: This structure defines a node in 
+ * Description: This structure defines a node in
  * a doubly linked list.
- * It is used for implementing stacks, queues, LIFO, and FIFO 
+ * It is used for implementing stacks, queues, LIFO, and FIFO
  * in the Holberton project.
  */
 
@@ -34,7 +34,8 @@ typedef struct stack_s
  * @file: A Pointer to the monty file
  * @content: Content of the line
  * @lifi: Flag indicating change between stack and queue
- * Description: This structure is used to transport various values and settings within the program.
+ * Description: This structure is used to transport various
+ * values and settings within the program.
  */
 
 typedef struct bus_s
@@ -47,11 +48,11 @@ typedef struct bus_s
 extern bus_t bus;
 
 /**
- * struct instruction_s - Structure to hold an opcode and 
+ * struct instruction_s - Structure to hold an opcode and
  * its corresponding function.
  * @opcode: The opcode abbreviation.
  * @f: Pointer to the function that handles the opcode.
- * Description: This structure associates an opcode 
+ * Description: This structure associates an opcode
  * with its corresponding function,
  * used in the context of stack, queues, LIFO, and FIFO operation
  * in the Holberton project.
