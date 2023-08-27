@@ -1,8 +1,7 @@
 #include "monty_header.h"
 
 /**
- * Execute - Executes the specified opcode
- * @opcode: The opcode to execute
+ * execute - Executes the specified opcode
  * @stack: Pointer to the stack
  * @counter: The Line counter
  * @file: Pointer to the Monty file
@@ -31,8 +30,7 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 		{NULL, NULL}
 	};
 	unsigned int a = 0;
-	char *op;
-	op = strtok(content, " \n\t");
+	char *op = strtok(content, " \n\t");
 
 	if (op && op[0] == '#')
 		return (0);

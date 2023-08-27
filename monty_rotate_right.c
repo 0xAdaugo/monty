@@ -3,7 +3,7 @@
 /**
  * f_rotr - Rotate the stack to move the top
  * elements to the bottom.
- * head: Pointer to the stack head
+ * @head: Pointer to the stack head
  * @counter: Unused line number counter
  * Return: No return value
  */

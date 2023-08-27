@@ -7,6 +7,7 @@
  */
 void f_div(stack_t **head, unsigned int counter)
 {
+	/*bus_t bus = {NULL, NULL, NULL, 0};*/
 	stack_t *ptr;
 	int length = 0, result;
 

@@ -6,7 +6,7 @@
  * @head: Head of the stack
  */
 
-void frre_stack(stack_t *head)
+void free_stack(stack_t *head)
 {
 	stack_t *currentNode;
 
