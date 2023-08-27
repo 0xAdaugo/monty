@@ -1,49 +1,51 @@
 #include "monty_header.h"
-
-/* Declaration of program context */
-program_context_t program_context = {NULL, NULL, NULL, 0};
-
+bus_t bus = {NULL, NULL, NULL, 0};
 /**
- * main - Custom Monty code interpreter
- * @argc: Number of command-line arguments
- * @argv: array of command-line arguments
+ * main - Monty code interpreter entry point
+ * @argc: Number of arguments
+ * @argv: Monty file location
  * Return: 0 on success
  */
 int main(int argc, char *argv[])
 {
-	char *line_content;
-	FILE *input_file;
-	size_t line_size = 0;
+	char *content;
+	FILE *file;
+	size_t size = 0;
 	ssize_t read_line = 1;
-	custom_stack_node_t *stack = NULL;
-	unsigned int line_counter = 0;
-
+	stack_t *stack = NULL;
+	unsigned int counter = 0;
+	/*Check for correct number of command-line arguments*/
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: custom_monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	input_file = fopen(argv[1], "r");
-	program_context.input_file = input_file;
-	if (!input_file)
+	/*Open the Monty file*/
+	file = fopen(argv[1], "r");
+	bus.file = file;
+	if (!file)
 	{
-		fprintf(stderr, "Error: Unable to open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
+	/*Read and process each line of the Monty file*/
 	while (read_line > 0)
 	{
-		line_content = NULL;
-		read_line = getline(&line_content, &line_size, input_file);
-		program_context.line_content = line_content;
-		line_counter++;
+		content = NULL;
+		read_line = getline(&content, &size, file);
+		bus.content = content;
+		counter++;
+		/*Execute the content of the line if read successfully*/
 		if (read_line > 0)
 		{
-			execute_operation(line_content, &stack, line_counter, input_file);
+			execute(content, &stack, counter, file);
 		}
-		free(line_content);
+		/*Free the allocated content memory*/
+		free(content);
 	}
-	free_custom_stack(stack);
-	fclose(input_file);
+	/*Clean up and close the file*/
+	free_stack(stack);
+	fclose(file);
 	return (0);
 }
 

@@ -3,22 +3,25 @@
 /**
  * f_pall - Display the elements of the stack.
  * @head: Pointer to the stack head
- * @counter: Line number
+ * @counter: Unused counter
  * Return: No return value
  */
 void f_pall(stack_t **head, unsigned int counter)
 {
-	stack_t *current_node;
+	stack_t *ptr;
 
-	current_node = *head;
+	/*Suppress unused parameter warnings*/
+	(void)counter;
 
-	if (current_node == NULL)
+	ptr = *head;
+
+	if (ptr == NULL)
 		return;
 
-	while (current_node)
+	while (ptr)
 	{
-		printf("%d\n", current_node->n);
-		current_node = current_node->next;
+		printf("%d\n", ptr->n);
+		ptr = ptr->next;
 	}
 }
 

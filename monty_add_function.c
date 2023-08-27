@@ -9,34 +9,34 @@
 
 void f_add(stack_t **head, unsigned int counter)
 {
-	stack_t *current_node;
-	int stack_length = 0, result;
+	stack_t *ptr;
+	int length = 0, result;
 
-	current_node = *head;
+	ptr = *head;
 
 	/* Calculate the length of the stack */
-	while (current_node)
+	while (ptr)
 	{
-		current_node = current_node->next;
-		stack_length++;
+		ptr = ptr->next;
+		length++;
 	}
 
 	/* Check if there are at least two elements in the stack */
-	if (stack_length < 2)
+	if (length < 2)
 	{
-		fprintf(stderr, "L%d: insufficient elements to perform addition\n", line_counter);
+		fprintf(stderr, "L%d:  can't add, stack too short\n", counter);
 		fclose(bus.file);
 		free(bus.content);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
 
-	current_node = *head;
+	ptr = *head;
 
 	/* Perform addition and update the stack */
-	result = current_node->n + current_node->next->n;
-	current_node->next->n = result;
-	*head = current_node->next;
-	free(current_node);
+	result = ptr->n + ptr->next->n;
+	ptr->next->n = result;
+	*head = ptr->next;
+	free(ptr);
 }
 

@@ -9,18 +9,21 @@
 
 void f_pstr(stack_t **head, unsigned int counter)
 {
-	stack_t *current_node;
+	stack_t *ptr;
 
-	current_node = *head;
+	/*Suppress unused parameter warnings*/
+	(void)counter;
 
-	while (current_node)
+	ptr = *head;
+
+	while (ptr)
 	{
-		if (current_node->n > 127 || current_node->n <= 0)
+		if (ptr->n > 127 || ptr->n <= 0)
 		{
 			break;
 		}
-		printf("%c", current_node->n);
-		current_node = current_node->next;
+		printf("%c", ptr->n);
+		ptr = ptr->next;
 	}
 	printf("\n");
 }
